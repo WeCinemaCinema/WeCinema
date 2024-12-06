@@ -1,0 +1,20 @@
+# Ignore build results
+bin/
+obj/
+
+# User-specific files
+.vs/
+.vscode/
+
+# Windows image file caches
+Thumbs.db
+
+# JetBrains Rider
+.idea/
+
+# User-specific files
+.user
+.userosscache
+.suo
+.vsscc
+.vspscc
