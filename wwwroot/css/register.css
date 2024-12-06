@@ -1,0 +1,120 @@
+.leftSide {
+  flex: 1;
+}
+
+.bigContainer {
+  display: flex;
+}
+
+.imageReg {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+
+.rightSide {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+}
+
+.headerRegister {
+  display: flex;
+  align-items: center;
+}
+
+.imgRegister {
+  width: 500px;
+  height: 500px;
+}
+
+.headerRegister {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.formFlex {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.yellowTxt {
+  color: yellow;
+}
+
+.inputFlex {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.inputTxt {
+  height: 40px;
+  border: 1.5px solid black;
+}
+
+.inputTxt::placeholder {
+  padding: 10px;
+}
+
+.registerButton {
+  background-color: #ffd000;
+  border-style: none;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.otherTxt {
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.loginMiddle {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.askingAccTxt {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.loginHereTxt {
+  text-decoration: none;
+  color: #ffd000;
+}
+
+.WeCinemaTxt {
+  color: #ffd000;
+  font-weight: 700;
+}
+
+.cinemaTxt {
+  color: black;
+}
+
+.registerButton:hover {
+  background-color: hsl(49, 80%, 50%);
+  color: hsl(0, 0%, 20%);
+}
+
+.greyCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: rgb(220, 220, 220);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}

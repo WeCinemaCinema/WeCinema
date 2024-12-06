@@ -1,0 +1,95 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows
+build_property.RootNamespace = ITDIV_TICKET
+build_property.RootNamespace = ITDIV_TICKET
+build_property.ProjectDir = C:\Users\Lenovo\Documents\ITDIV_TICKET\
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = C:\Users\Lenovo\Documents\ITDIV_TICKET
+build_property._RazorSourceGeneratorDebug = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/Shared/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/Shared/_ValidationScriptsPartial.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/AboutUs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcQWJvdXRVcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/ContactUs.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcQ29udGFjdFVzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/History.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcSGlzdG9yeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/Location.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcTG9jYXRpb24uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/Movie.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcTW92aWUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/Orderticket.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcT3JkZXJ0aWNrZXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/Payment.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcUGF5bWVudC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/Privacy.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcUHJpdmFjeS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/Promotions.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcUHJvbW90aW9ucy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/Register.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcUmVnaXN0ZXIuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/Seat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcU2VhdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/WeCinema/Term.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcV2VDaW5lbWFcVGVybS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/_ViewImports.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Lenovo/Documents/ITDIV_TICKET/Views/Shared/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = b-v8kj3ta392

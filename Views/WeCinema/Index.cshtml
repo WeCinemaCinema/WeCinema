@@ -1,0 +1,135 @@
+﻿@using ITDIV_TICKET.Models
+@inject MovieService _movieService
+
+@{
+  var upcomingMovie = await _movieService.GetUpcomingMovie();
+}
+
+
+<link rel="stylesheet" href="~/css/Index.css" />
+<link rel="stylesheet" href="~/css/MovCarousel.css" />
+
+<div class="container">
+
+  <div class="carousel-image">
+    <div class="mySlides fade">
+      <img
+        src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/5a9961dd-80f2-4fd9-84df-b694124efbea/dg0ax7p-87e1548a-df04-4929-bf25-b04128ff4c9a.jpg/v1/fill/w_1280,h_720,q_75,strp/one_piece_film__red__2022__poster_art_landscape_by_yahyeetyah2020_dg0ax7p-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7ImhlaWdodCI6Ijw9NzIwIiwicGF0aCI6IlwvZlwvNWE5OTYxZGQtODBmMi00ZmQ5LTg0ZGYtYjY5NDEyNGVmYmVhXC9kZzBheDdwLTg3ZTE1NDhhLWRmMDQtNDkyOS1iZjI1LWIwNDEyOGZmNGM5YS5qcGciLCJ3aWR0aCI6Ijw9MTI4MCJ9XV0sImF1ZCI6WyJ1cm46c2VydmljZTppbWFnZS5vcGVyYXRpb25zIl19.5VzW1-AfA-CFeH0eII7IU_jkISHLZPeu_i-8exI31W0"
+        alt="Movie 1" style="height: 640px; width:100%">
+      <div class="overlay"></div>
+    </div>
+
+    <div class="mySlides fade">
+      <img src="https://i.ytimg.com/vi/0mTAscD4vt8/maxresdefault.jpg" alt="Movie 2" style="height: 640px; width:100%">
+      <div class="overlay"></div>
+    </div>
+
+    <div class="next">
+      <a onclick="plusSlides(-1)">&#10095;</a>
+    </div>
+    <div class="prev">
+      <a onclick="plusSlides(1)">&#10094;</a>
+    </div>
+
+  </div>
+</div>
+
+<div class="movie-carousel">
+  <div class="title">
+    <div class="title-1">
+      <p class="text-1">Choose Your Movie</p>
+    </div>
+    <div class="title-2">
+      <button class="text-2 active" onclick="activateButton(this, 'NowShowing')" href="">Now Showing</button>
+      <button class="text-2" onclick="activateButton(this, 'Upcoming')">Upcoming</button>
+    </div>
+    <div id="NowShowing" class="tabcontent">
+      <div class="containerMovie">
+        @foreach (var movie in Model)
+        {
+          <a class="movieCard" asp-action="Location" asp-controller="WeCinema" asp-route-id="@movie.Movie_id">
+            <img class="imageSrc" alt="Image Movie" src="@($"https://image.tmdb.org/t/p/w500{movie.ImageUrl}")" />
+            <div class="subTxt">
+              <p class="genre">@movie.Genre</p>
+              <p class="mov-title">@movie.Title</p>
+            </div>
+          </a>
+        }
+      </div>
+
+    </div>
+    <div id="Upcoming" class="tabcontent" style="display: flex;">
+      <div class="containerMovie">
+        @foreach (var movie in upcomingMovie)
+        {
+          <div class="movieCard">
+            <img class="imageSrc" alt="Image Movie" src="@($"https://image.tmdb.org/t/p/w500{movie.ImageUrl}")" />
+            <div class="subTxt">
+              <p class="genre">@movie.Genre</p>
+              <p class="mov-title">@movie.Title</p>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<div class="discount">
+  <div class="left-disc">
+    <img src="~/img/imgKiri.png" alt="Discount">
+    <div class="overlay-disc"></div>
+    <div class="text-disc-left">
+      <p id="text-left-1">Discount</p>
+      <p id="text-left-2">UP TO</p>
+      <p id="text-left-3">70% off</p>
+      <p id="text-left-4">terms and conditions applied</p>
+    </div>
+
+  </div>
+
+  <div class="discDesc">
+    <p id="discTitle-1">
+      Exciting
+    </p>
+    <p id="discTitle-2">
+      Promotions & Discounts
+    </p>
+    <p id="discTitle-3">
+      Enjoy exclusive deals every day! Don’t miss out on discounts for new users and other amazing offers.
+    </p>
+    <a href="/wecinema/promotions">
+      <button style="position: static; float: right; margin: 1rem 2rem;"class="promotions">
+        See More
+      </button>
+    </a>
+  </div>
+
+</div>
+</div>
+
+<script src="~/js/Index.js"></script>
+
+<script>
+  let myIndex = 0; 
+
+  function carousel() {
+    var i;
+    var x = document.getElementsByClassName("mySlides"); 
+    for (i = 0; i < x.length; i++) {
+      x[i].style.display = "none"; 
+    }
+    myIndex++;
+    if (myIndex > x.length) { 
+      myIndex = 1; 
+    }
+    x[myIndex - 1].style.display = "block"; 
+    setTimeout(carousel, 10000); 
+  }
+
+  window.onload = function () {
+    carousel();
+  };
+</script>
+

@@ -1,0 +1,421 @@
+@using ITDIV_TICKET.Models
+@using System.Globalization;
+@model PaymentModel
+@inject MovieService _movieService
+
+@{
+  Layout = null;
+  CultureInfo culture = new CultureInfo("id-ID");
+  var currMovie = await _movieService.GetMovie(Model.MovieId);
+
+  var reservedSeats = await _movieService.GetReservedSeatsForCinema(Model.CinemaId, Model.MovieId);
+
+  List<string> formattedSeats = new List<string>();
+  foreach (var seat in reservedSeats)
+  {
+    formattedSeats.Add(seat.Seat_row + seat.Seat_column);
+  }
+
+  var getSinglePrice = await _movieService.GetSinglePrice(Model.CinemaId);
+
+  var numberOfSit = Model.SeatList?.Split(",").Length ?? 0;
+  var calcPrice = numberOfSit * getSinglePrice;
+  var totalPrice = calcPrice.ToString("N", culture);
+
+
+  var newDate = Model.Date;
+  var newTime = Model.Time;
+
+  string dateTimeString = $"{newDate} {newTime}";
+  string format = "dddd, d MMMM yyyy HH:mm";
+
+  DateTime normalDateTime = DateTime.ParseExact(dateTimeString, format, null, System.Globalization.DateTimeStyles.None);
+
+  var currShow = await _movieService.GetShowByCinemaMovieDate(Model.CinemaId, Model.MovieId, normalDateTime);
+
+  var currShowId = currShow.FirstOrDefault()?.Show_id ?? 0;
+
+
+  string[] seats = Model.SeatList?.Split(",") ?? new string[0];
+}
+
+<style>
+  .pay-button:disabled {
+    background-color: gray;
+    border: none;
+  }
+
+  .pay-button:disabled:hover {
+    background-color: gray;
+    border: none;
+    color: black;
+  }
+</style>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/css/payment.css">
+<link rel="stylesheet" href="~/css/leftOrder.css">
+<link rel="stylesheet" href="~/css/OrderTicket.css">
+<link rel="stylesheet" href="~/css/seat.css">
+
+<div class="container-body">
+
+  <div class="left-loc-container">
+    <div class="logo">
+      <span class="we">We</span><span class="cinema">Cinema</span>
+    </div>
+    <div class="movie-poster">
+      <img src="@($"https://image.tmdb.org/t/p/w500{currMovie!.ImageUrl}")" alt="Wicked Poster">
+      <button class="play-button" onclick="openTrailer()">
+        <div class="triangle"></div>
+      </button>
+    </div>
+    <div class="tabs">
+      <span class="tab active" id="synopsis-tab">Sinopsis</span>
+      <span class="tab" id="cast-tab">Cast</span>
+    </div>
+    <div class="content" id="content">
+      <p>
+        @currMovie.Description
+      </p>
+    </div>
+  </div>
+
+  <div class="right-container">
+    <div class="steps">
+      <div href="/wecinema/location" class="step" id="location-step">
+        <span class="number">01</span> <span>Select Location</span>
+      </div>
+      <div href="/wecinema/OrderTicket" class="step" id="seat-step">
+        <span class="number">02</span> <span>Select Seat</span>
+      </div>
+      <a class="step active" class="step" id="purchase-step">
+        <span class="number">03</span> <span>Purchase</span>
+      </a>
+    </div>
+
+    <div class="cinema-container">
+      <div class="screen"></div>
+      <h5>Screen</h5>
+
+      <div class="seats-container-wrapper">
+
+
+        <div id="seats-wrapper">
+
+        </div>
+
+        <div class="column-labels">
+          <div class="column-label">1</div>
+          <div class="column-label">2</div>
+          <div class="column-label">3</div>
+          <div class="spacer"></div>
+          <div class="column-label">4</div>
+          <div class="column-label">5</div>
+          <div class="column-label">6</div>
+          <div class="column-label">7</div>
+          <div class="column-label">8</div>
+          <div class="column-label">9</div>
+          <div class="column-label">10</div>
+          <div class="column-label">11</div>
+          <div class="column-label">12</div>
+          <div class="column-label">13</div>
+          <div class="column-label">14</div>
+          <div class="column-label">15</div>
+          <div class="spacer"></div>
+          <div class="column-label">16</div>
+          <div class="column-label">17</div>
+          <div class="column-label">18</div>
+        </div>
+      </div>
+
+      <div class="legend">
+        <div><span class="seat selected"></span>
+          <p>Selected</p>
+        </div>
+        <div><span class="seat available"></span>
+          <p>Available</p>
+        </div>
+        <div><span class="seat taken"></span>
+          <p>Taken</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="payment-container">
+      <hr>
+      <h1 class="total-purchase">Total Purchase</h1>
+      <div class="separator"></div>
+
+      <div class="movie-details">@currMovie.Title</div>
+      <div class="date-time">
+        <span>@Model.Date</span> <br>
+        <span class="time-icon">🕒</span> @Model.Time
+      </div>
+
+      <div class="seats">
+        Seat: @Model.SeatList
+        <span class="price"><span>Rp</span> @totalPrice</span>
+      </div>
+      <br>
+
+      <div class="separator"></div>
+
+      <div class="sub-total">
+        <span>Sub-total</span>
+        <span class="price"><span>Rp</span> @totalPrice</span>
+      </div>
+      <br><br>
+      <div class="payment-method">
+        <h2>Payment Method</h2>
+
+        <div class="payment-dropdown-container">
+
+          <div class="dropdown-box" id="bank-transfer-box">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M5 18.75V15.4142M11.6667 18.75V15.4142M18.3333 18.75V15.4142M25 18.75V15.4142M3 23H27V27H3V23ZM3 11V8.33333L14.5068 3L27 8.33333V11H3Z"
+                stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+            <span>Bank Transfer</span>
+            <div class="option">
+              <label class="option-label"><span class="yellow-square"></span>Bank BCA | xxxxxxxxxxx
+                <span class="circle-button" data-group="bank-transfer" data-method="BCA"></span>
+              </label>
+              <label class="option-label"><span class="yellow-square"></span>Bank BRI | xxxxxxxxxxx
+                <span class="circle-button" data-group="bank-transfer" data-method="BRI"></span>
+              </label>
+              <label class="option-label"><span class="yellow-square"></span>Bank IBN | xxxxxxxxxxx
+                <span class="circle-button" data-group="bank-transfer" data-method="IBN"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="dropdown-box" id="retail-outlet-box">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M3.75 11.7701C3.75 11.3083 3.98502 10.8751 4.38071 10.6075L14.1307 4.01396C14.6512 3.66201 15.3488 3.66201 15.8693 4.01397L25.6193 10.6075C26.015 10.8751 26.25 11.3083 26.25 11.7701V24.1103C26.25 25.292 25.2426 26.25 24 26.25H6C4.75736 26.25 3.75 25.292 3.75 24.1103V11.7701Z"
+                stroke="black" stroke-width="2" />
+            </svg>
+            <span>Retail Outlet</span>
+            <div class="option">
+              <label class="option-label"><span class="yellow-square"></span>Alfamart
+                <span class="circle-button" data-group="retail-outlet" data-method="Alfamart"></span>
+              </label>
+              <label class="option-label"><span class="yellow-square"></span>Indimart
+                <span class="circle-button" data-group="retail-outlet" data-method="Indimart"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="dropdown-box" id="e-wallet-box">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M27 20.6998V21.6998C27.5523 21.6998 28 21.2521 28 20.6998H27ZM27 14.0998H28C28 13.5475 27.5523 13.0998 27 13.0998V14.0998ZM9.05924 7.85863C8.59467 8.15728 8.46017 8.77599 8.75882 9.24056C9.05747 9.70513 9.67619 9.83964 10.1408 9.54098L9.05924 7.85863ZM18 3.2998L18.7893 2.68586C18.4716 2.27732 17.8946 2.17875 17.4592 2.45863L18 3.2998ZM21.4106 9.31375C21.7497 9.74969 22.378 9.82823 22.8139 9.48916C23.2499 9.15009 23.3284 8.52181 22.9893 8.08587L21.4106 9.31375ZM27 19.6998H23.1V21.6998H27V19.6998ZM23.1 15.0998H27V13.0998H23.1V15.0998ZM26 14.0998V20.6998H28V14.0998H26ZM20.8 17.3998C20.8 16.1296 21.8297 15.0998 23.1 15.0998V13.0998C20.7252 13.0998 18.8 15.025 18.8 17.3998H20.8ZM23.1 19.6998C21.8297 19.6998 20.8 18.6701 20.8 17.3998H18.8C18.8 19.7746 20.7252 21.6998 23.1 21.6998V19.6998ZM10.1408 9.54098L18.5408 4.14098L17.4592 2.45863L9.05924 7.85863L10.1408 9.54098ZM17.2106 3.91375L21.4106 9.31375L22.9893 8.08587L18.7893 2.68586L17.2106 3.91375ZM4.2 9.69981H24.6V7.69981H4.2V9.69981ZM24.6 25.6998H4.2V27.6998H24.6V25.6998ZM4 25.4998V9.89981H2V25.4998H4ZM4.2 25.6998C4.08954 25.6998 4 25.6103 4 25.4998H2C2 26.7148 2.98497 27.6998 4.2 27.6998V25.6998ZM24.8 25.4998C24.8 25.6103 24.7105 25.6998 24.6 25.6998V27.6998C25.815 27.6998 26.8 26.7148 26.8 25.4998H24.8ZM24.6 9.69981C24.7105 9.69981 24.8 9.78935 24.8 9.89981H26.8C26.8 8.68478 25.815 7.69981 24.6 7.69981V9.69981ZM4.2 7.69981C2.98497 7.69981 2 8.68478 2 9.89981H4C4 9.78935 4.08954 9.69981 4.2 9.69981V7.69981ZM24.8 21.5998V25.4998H26.8V21.5998H24.8ZM24.8 9.89981V13.0498H26.8V9.89981H24.8Z"
+                fill="black" />
+            </svg>
+            <span>E-wallet</span>
+            <div class="option">
+              <label class="option-label"><span class="yellow-square"></span>Pergi Pay
+                <span class="circle-button" data-group="e-wallet" data-method="Pergi Pay"></span>
+              </label>
+              <label class="option-label"><span class="yellow-square"></span>Ava
+                <span class="circle-button" data-group="e-wallet" data-method="Ava"></span>
+              </label>
+              <label class="option-label"><span class="yellow-square"></span>Sapi Pay
+                <span class="circle-button" data-group="e-wallet" data-method="Sapi Pay"></span>
+              </label>
+            </div>
+          </div>
+
+          <div class="dropdown-box" id="qr-payment-box">
+            <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M11.25 3.75H6.25C4.86929 3.75 3.75 4.86929 3.75 6.25V11.25M11.25 26.25H6.25C4.86929 26.25 3.75 25.1307 3.75 23.75V18.75M18.75 3.75H23.75C25.1307 3.75 26.25 4.86929 26.25 6.25V11.25M26.25 18.75V23.75C26.25 25.1307 25.1307 26.25 23.75 26.25H18.75M12.1875 19.2188H17.8125C18.5892 19.2188 19.2188 18.5892 19.2188 17.8125V12.1875C19.2188 11.4108 18.5892 10.7812 17.8125 10.7812H12.1875C11.4108 10.7812 10.7812 11.4108 10.7812 12.1875V17.8125C10.7812 18.5892 11.4108 19.2188 12.1875 19.2188Z"
+                stroke="black" stroke-width="2" stroke-linecap="round" />
+            </svg>
+            <span>QR Payments</span>
+            <div class="option">
+              <label class="option-label">
+                <img
+                  src="https://static.vecteezy.com/system/resources/previews/002/557/391/original/qr-code-for-scanning-free-vector.jpg">
+                <span class="circle-button" data-group="qr-payment" data-method="barcode"></span>
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form method="post" asp-action="submitData">
+        <input type="hidden" name="totalPrice" value="@calcPrice" />
+        <input type="hidden" name="paymentMethod" />
+        <input type="hidden" name="totalSeat" value="@numberOfSit" />
+        <input type="hidden" name="showId" value="@currShowId" />
+        <input type="hidden" name="seat" value="@Model.SeatList" />
+        <input type="submit" value="Pay" class="pay-button" id="submitButton" disabled />
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+  document.getElementById('synopsis-tab').addEventListener('click', () => {
+    document.getElementById('content').innerHTML = `
+          <p>
+  @currMovie.Description
+          </p>
+        `;
+    setActiveTab('synopsis-tab');
+  });
+
+  document.getElementById('cast-tab').addEventListener('click', () => {
+    document.getElementById('content').innerHTML = `
+          <p>
+            <strong>Director:</strong> <br>
+  @currMovie.Director<br><br>
+            <strong>Cast</strong> <br>
+  @currMovie.Cast<br><br>
+            <strong>Genre</strong><br>@currMovie.Genre<br><br> 
+          </p>
+        `;
+    setActiveTab('cast-tab');
+  });
+
+  function setActiveTab(tabId) {
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.classList.remove('active');
+    });
+    document.getElementById(tabId).classList.add('active');
+  }
+
+  function openTrailer() {
+    const youtubeTrailerURL = '@currMovie.TrailerUrl';
+    window.open(youtubeTrailerURL, '_blank');
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const seatsWrapper = document.getElementById("seats-wrapper");
+    const rows = 10;
+    const colsLeft = 3;
+    const colsMiddle = 12;
+    const colsRight = 3;
+
+    const takenSeats = @Html.Raw(Json.Serialize(formattedSeats));
+    const selectedSeats = @Html.Raw(Json.Serialize(seats));
+
+    const submitButton = document.getElementById("submitButton");
+
+    for (let row = rows - 1; row >= 0; row--) {
+      const rowLetter = String.fromCharCode(65 + row);
+
+      const rowDiv = document.createElement("div");
+      rowDiv.classList.add("seats-container-row");
+
+      const leftLabel = document.createElement("div");
+      leftLabel.classList.add("row-label");
+      leftLabel.innerText = rowLetter;
+      rowDiv.appendChild(leftLabel);
+
+      const seatsContainer = document.createElement("div");
+      seatsContainer.classList.add("seats-container");
+
+      for (let col = 1; col <= colsLeft; col++) {
+        createSeat(rowLetter, col, seatsContainer, takenSeats, selectedSeats);
+      }
+
+      createSpacer(seatsContainer);
+
+      for (let col = 4; col < 4 + colsMiddle; col++) {
+        createSeat(rowLetter, col, seatsContainer, takenSeats, selectedSeats);
+      }
+
+      createSpacer(seatsContainer);
+
+      for (let col = 16; col < 16 + colsRight; col++) {
+        createSeat(rowLetter, col, seatsContainer, takenSeats, selectedSeats);
+      }
+
+      rowDiv.appendChild(seatsContainer);
+
+      const rightLabel = document.createElement("div");
+      rightLabel.classList.add("row-label");
+      rightLabel.innerText = rowLetter;
+      rowDiv.appendChild(rightLabel);
+
+      seatsWrapper.appendChild(rowDiv);
+    }
+
+    function createSeat(row, col, container, takenSeats, selectedSeats) {
+      const seat = document.createElement("div");
+      seat.classList.add("seat");
+      seat.dataset.seatId = `${row}${col}`;
+
+      if (takenSeats.includes(`${row}${col}`)) {
+        seat.classList.add("taken");
+      }
+
+      if (selectedSeats.includes(`${row}${col}`)) {
+        seat.classList.add("selected");
+      }
+
+      seat.addEventListener("click", () => {
+        if (!seat.classList.contains("taken")) {
+          const seatId = `${row}${col}`;
+
+          if (selectedSeats.includes(seatId)) {
+            selectedSeats.splice(selectedSeats.indexOf(seatId), 1);
+            seat.classList.remove("selected");
+          } else {
+            selectedSeats.push(seatId);
+            seat.classList.add("selected");
+          }
+          submitButton.disabled = selectedSeats.length === 0;
+        }
+      });
+
+      container.appendChild(seat);
+    }
+
+    function createSpacer(container) {
+      const spacer = document.createElement("div");
+      spacer.classList.add("spacer");
+      container.appendChild(spacer);
+    }
+  });
+
+
+  let paymentMethod = null;
+
+  document.querySelectorAll('.dropdown-box').forEach(box => {
+    box.addEventListener('click', (e) => {
+      const isOpen = box.classList.contains('open');
+
+      document.querySelectorAll('.dropdown-box').forEach(b => b.classList.remove('open'));
+
+      if (!isOpen) {
+        box.classList.add('open');
+      }
+      e.stopPropagation();
+    });
+  });
+
+  document.querySelectorAll('.circle-button').forEach(button => {
+    button.addEventListener('click', (e) => {
+      paymentMethod = null;
+      const buttonGroup = e.target.dataset.group;
+      document.querySelectorAll(`[data-group="${buttonGroup}"]`).forEach(btn => btn.classList.remove('selected'));
+      e.target.classList.add('selected');
+      const currMethod = e.target.getAttribute('data-method');
+      document.querySelector('input[name="paymentMethod"]').value = currMethod;
+
+      submitButton.disabled = false;
+
+      e.stopPropagation();
+    });
+  });
+
+  document.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown-box').forEach(box => box.classList.remove('open'));
+  });
+</script>

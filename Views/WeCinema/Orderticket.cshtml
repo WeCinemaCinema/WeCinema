@@ -1,0 +1,413 @@
+@using ITDIV_TICKET.Models
+@model MoviesModel
+@inject MovieService _movieService
+
+@{
+    Layout = null;
+    
+    int newId = 0;
+    int newMovieId = 0;
+
+    newId = Int32.TryParse(ViewData["LocationId"]?.ToString(), out newId) ? newId : 0;
+    newMovieId = Int32.TryParse(ViewData["MovieId"]?.ToString(), out newMovieId) ? newMovieId : 0;
+
+    var location = await _movieService.GetLocation(newId);
+
+    var reservedSeats = await _movieService.GetReservedSeatsForCinema(newId, newMovieId);
+
+    var shows = await _movieService.GetShowsForCinemaAndMovie(newId, newMovieId);
+
+    var groupedShows = shows
+    .GroupBy(show => show.Date.Date)
+    .Select(group => new
+    {
+        NormalDate = group.Key,
+        FullDate = group.Key.ToString("dddd, d MMMM yyyy"),
+        Day = group.Key.ToString("ddd").ToUpper(),
+        Date = group.Key.Day, 
+        Time = group.Select(g => g.Date.ToString("HH:mm")).ToList() 
+    })
+    .ToList();
+
+    List<string> formattedSeats = new List<string>();
+    foreach (var seat in reservedSeats)
+    {
+        formattedSeats.Add(seat.Seat_row + seat.Seat_column);
+    }
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+<link rel="stylesheet" href="~/css/OrderTicket.css">
+<link rel="stylesheet" href="~/css/leftOrder.css">
+<link rel="stylesheet" href="~/css/seat.css">
+
+<style>
+#submitButton:disabled {
+  background-color: gray;
+}
+
+#submitButton:disabled:hover {
+  background-color: gray;
+  color: black;
+  border: none;
+}
+</style>
+
+<div class="container-body">
+
+    <div class="left-loc-container">
+        <div class="logo">
+            <span class="we">We</span><span class="cinema">Cinema</span>
+        </div>
+        <div class="movie-poster">
+            <img src="@($"https://image.tmdb.org/t/p/w500{Model.ImageUrl}")" alt="Wicked Poster">
+            <button class="play-button" onclick="openTrailer()">
+                <div class="triangle"></div>
+            </button>
+        </div>
+        <div class="tabs">
+            <span class="tab active" id="synopsis-tab">Sinopsis</span>
+            <span class="tab" id="cast-tab">Cast</span>
+        </div>
+        <div class="content" id="content">
+            <p>
+                @Model.Description
+            </p>
+        </div>
+    </div>
+
+    <div class="right-container">
+        <div class="steps">
+            <div href="/wecinema/location" class="step" id="location-step">
+                <span class="number">01</span> <span>Select Location</span>
+            </div>
+            <a class="step active" class="step" id="seat-step">
+                <span class="number">02</span> <span>Select Seat</span>
+            </a>
+            <a href="payment.html" class="step" id="purchase-step">
+                <span class="number">03</span> <span>Purchase</span>
+            </a>
+        </div>
+
+        <div class="movieName">
+            <h2>@Model.Title</h2>
+        </div>
+        <div class="mini-desc">
+            <div class="rated">
+                <p id="rated">@Model.Rating</p>
+            </div>
+
+            <div class="duration">
+                <span class="material-icons">schedule</span>
+                <p id="duration">@Model.Duration minutes</p>
+            </div>
+
+            <div class="location-place">
+                <span id="loc-icon" class="material-icons">location_on</span>
+                <p id="location">@location!.Location</p>
+            </div>
+        </div>
+
+        <div class="show-time-date">
+            <div class="date-picker">
+                <p>Date</p>
+                <hr>
+                <div class="date-grid">
+                    @foreach (var singleDate in groupedShows)
+                    {
+                        <div class="date-item" data-date="@singleDate.Date" data-totalDate="@singleDate.FullDate"
+                            data-normalDate="@singleDate.NormalDate">
+                            <span>@singleDate.Day</span>
+                            <span class="number-date">@singleDate.Date</span>
+                        </div>
+                    }
+                </div>
+
+            </div>
+            <div class="showtime-picker">
+                <p>Show Time</p>
+                <hr>
+                <div class="showtime-grid" id="showtime-grid">
+                </div>
+            </div>
+        </div>
+        <div class="cinema-container">
+            <div class="screen-wrapper">
+                <div class="screen"></div>
+                <h5>Screen</h5>
+            </div>
+
+
+            <div class="seats-container-wrapper">
+
+                <div id="seats-wrapper">
+
+                </div>
+
+                <div class="column-labels">
+                    <div class="column-label">1</div>
+                    <div class="column-label">2</div>
+                    <div class="column-label">3</div>
+                    <div class="spacer"></div>
+                    <div class="column-label">4</div>
+                    <div class="column-label">5</div>
+                    <div class="column-label">6</div>
+                    <div class="column-label">7</div>
+                    <div class="column-label">8</div>
+                    <div class="column-label">9</div>
+                    <div class="column-label">10</div>
+                    <div class="column-label">11</div>
+                    <div class="column-label">12</div>
+                    <div class="column-label">13</div>
+                    <div class="column-label">14</div>
+                    <div class="column-label">15</div>
+                    <div class="spacer"></div>
+                    <div class="column-label">16</div>
+                    <div class="column-label">17</div>
+                    <div class="column-label">18</div>
+                </div>
+            </div>
+
+            <div class="legend">
+                <div><span class="seat selected"></span>
+                    <p>Selected</p>
+                </div>
+                <div><span class="seat available"></span>
+                    <p>Available</p>
+                </div>
+                <div><span class="seat taken"></span>
+                    <p>Taken</p>
+                </div>
+            </div>
+        </div>
+
+
+        <form class="submission" method="post" asp-action="PaymentData" style="
+            display: flex;
+            justify-content: center;">
+            <input type="hidden" name="CinemaId" value="@newId" />
+            <input type="hidden" name="MovieId" value="@newMovieId" />
+            <input type="hidden" name="Date" value="" required />
+            <input type="hidden" name="Time" value="" required />
+            <input type="hidden" name="SeatList" value="" required />
+            <input type="hidden" name="NormalDate" value="" />
+            <input type="submit" value="Next" class="next-button" id="submitButton" disabled />
+        </form>
+
+
+    </div>
+</div>
+
+<script>
+    document.getElementById('synopsis-tab').addEventListener('click', () => {
+        document.getElementById('content').innerHTML = `
+      <p>
+    @Model.Description
+      </p>
+    `;
+        setActiveTab('synopsis-tab');
+    });
+
+    document.getElementById('cast-tab').addEventListener('click', () => {
+        document.getElementById('content').innerHTML = `
+      <p>
+        <strong>Director:</strong> <br>
+    @Model.Director<br><br>
+        <strong>Cast</strong> <br>
+    @Model.Cast<br><br>
+        <strong>Genre</strong><br>@Model.Genre<br><br> 
+      </p>
+    `;
+        setActiveTab('cast-tab');
+    });
+
+    function setActiveTab(tabId) {
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        document.getElementById(tabId).classList.add('active');
+    }
+
+    function openTrailer() {
+        const youtubeTrailerURL = '@Model.TrailerUrl';
+        window.open(youtubeTrailerURL, '_blank'); 
+    }
+
+    let selectedDate = null;
+    let selectedTime = null;
+    let selectedSeats = [];
+
+    const submitButton = document.getElementById("SubmitButton");
+
+    function updateSubmitButton() {
+        let date = document.querySelector('input[name="Date"]').value;
+        let time = document.querySelector('input[name="Time"]').value;
+
+        let submitButton = document.getElementById("submitButton");
+        if (selectedSeats.length > 0 && date && time) {
+            submitButton.disabled = false; 
+        } else {
+            submitButton.disabled = true; 
+        }
+    }
+
+    document.querySelectorAll('.date-item').forEach(item => {
+        item.addEventListener('click', () => {
+
+            document.querySelectorAll('.date-item').forEach(el => el.classList.remove('selected'));
+            item.classList.add('selected');
+            selectedDate = item.getAttribute('data-date');
+            selectedTotalDate = item.getAttribute('data-totalDate');
+            selectedNormalDate = item.getAttribute('data-normalDate');
+            document.querySelector('input[name="Date"]').value = selectedTotalDate;
+            document.querySelector('input[name="NormalDate"]').value = selectedNormalDate;
+
+            updateSubmitButton();
+
+            const showtimeGrid = document.getElementById('showtime-grid');
+            showtimeGrid.innerHTML = '';
+            selectedTime = null;
+
+            const shows = @Html.Raw(Json.Serialize(groupedShows));
+            const selectedShows = shows.find(show => show.date === parseInt(selectedDate));
+
+
+            if (selectedShows) {
+
+                selectedShows.time.forEach(time => {
+
+                    const showtimeDiv = document.createElement('div');
+                    showtimeDiv.classList.add('showtime-item');
+
+
+                    showtimeDiv.textContent = time;
+
+                    showtimeDiv.addEventListener('click', () => {
+                        document.querySelectorAll('.showtime-item').forEach(el => el.classList.remove('selected'));
+                        showtimeDiv.classList.add('selected');
+                        selectedTime = time;
+                        document.querySelector('input[name="Time"]').value = selectedTime;
+                        updateSubmitButton();
+                    });
+
+                    showtimeGrid.appendChild(showtimeDiv);
+                });
+            }
+        });
+    });
+
+
+    document.addEventListener("DOMContentLoaded", () => {
+        const seatsWrapper = document.getElementById("seats-wrapper");
+        const selectedSeatsDisplay = document.getElementById("selected-seats");
+        const totalPriceDisplay = document.getElementById("total-price");
+        const proceedToPaymentButton = document.getElementById("proceed-to-payment");
+        const submitButton = document.getElementById("submitButton");
+
+        const rows = 10; 
+        const colsLeft = 3; 
+        const colsMiddle = 12; 
+        const colsRight = 3; 
+        const seatPrice = 50000;
+
+        const takenSeats = @Html.Raw(Json.Serialize(formattedSeats));
+
+        for (let row = rows - 1; row >= 0; row--) {
+            const rowLetter = String.fromCharCode(65 + row);
+
+            const rowDiv = document.createElement("div");
+            rowDiv.classList.add("seats-container-row");
+
+            const leftLabel = document.createElement("div");
+            leftLabel.classList.add("row-label");
+            leftLabel.innerText = rowLetter;
+            rowDiv.appendChild(leftLabel);
+
+            const seatsContainer = document.createElement("div");
+            seatsContainer.classList.add("seats-container");
+
+            for (let col = 1; col <= colsLeft; col++) {
+                createSeat(rowLetter, col, seatsContainer, takenSeats);
+            }
+
+            createSpacer(seatsContainer);
+
+            for (let col = 4; col < 4 + colsMiddle; col++) {
+                createSeat(rowLetter, col, seatsContainer, takenSeats);
+            }
+
+            createSpacer(seatsContainer);
+
+            for (let col = 16; col < 16 + colsRight; col++) {
+                createSeat(rowLetter, col, seatsContainer, takenSeats);
+            }
+
+            rowDiv.appendChild(seatsContainer);
+
+            const rightLabel = document.createElement("div");
+            rightLabel.classList.add("row-label");
+            rightLabel.innerText = rowLetter;
+            rowDiv.appendChild(rightLabel);
+
+            seatsWrapper.appendChild(rowDiv);
+        }
+
+        function createSeat(row, col, container, takenSeats) {
+            const seat = document.createElement("div");
+            seat.classList.add("seat");
+            seat.dataset.seatId = `${row}${col}`;
+            if (takenSeats.includes(`${row}${col}`)) {
+                seat.classList.add("taken");
+            }
+
+            seat.addEventListener("click", () => {
+                if (!seat.classList.contains("taken")) {
+
+                    seat.classList.toggle("selected");
+                    const seatId = seat.dataset.seatId;
+
+                    if (seat.classList.contains("selected")) {
+                        selectedSeats.push(seatId);
+                    } else {
+                        const index = selectedSeats.indexOf(seatId);
+                        if (index > -1) {
+                            selectedSeats.splice(index, 1);
+                        }
+                    }
+
+                    const seatListString = selectedSeats.join(",");
+
+
+                    document.querySelector('input[name="SeatList"]').value = seatListString;
+
+                    updateSubmitButton();
+                }
+            });
+            container.appendChild(seat);
+        }
+
+        function createSpacer(container) {
+            const spacer = document.createElement("div");
+            spacer.classList.add("spacer");
+            container.appendChild(spacer);
+        }
+        function updatePaymentInfo() {
+            selectedSeatsDisplay.innerText = selectedSeats.length ? selectedSeats.join(", ") : "None";
+            totalPriceDisplay.innerText = `Rp ${selectedSeats.length * seatPrice}`;
+        }
+
+        proceedToPaymentButton.addEventListener("click", () => {
+            if (selectedSeats.length === 0) {
+                alert("Please select at least one seat before proceeding to payment.");
+                return;
+            }
+
+            localStorage.setItem("selectedSeats", JSON.stringify(selectedSeats));
+            localStorage.setItem("totalPrice", selectedSeats.length * seatPrice);
+
+            window.location.href = "payment2.html";
+        });
+
+    });
+</script>

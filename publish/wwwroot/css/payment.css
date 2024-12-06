@@ -1,0 +1,235 @@
+main {
+  width: 100%;
+  overflow: auto;
+}
+
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  display: flex;
+}
+
+.purchase-container {
+  display: flex;
+  width: 100%;
+}
+
+.left-pay-container {
+  width: 500px;
+  height: 810px;
+  background-color: #f8f8f8;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  box-shadow: 2px 0px 30px 2px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.payment-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding-left: 100px;
+  padding-right: 80px;
+}
+
+.total-purchase {
+  font-size: 40px;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.separator {
+  border-top: 2px solid lightgray;
+  margin-bottom: 20px;
+}
+
+.movie-details {
+  font-size: 24px;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+.date-time {
+  font-size: 16px;
+}
+
+.time-icon {
+  font-size: 16px;
+  margin-right: 5px;
+}
+
+.seats {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.seats {
+  font-size: 16px;
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.seats .price {
+  text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.seats .price span {
+  font-size: 16px;
+  font-weight: normal;
+  margin-right: 5px;
+  color: black;
+}
+
+.sub-total {
+  font-size: 20px;
+  font-weight: semibold;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.sub-total .price {
+  font-size: 32px;
+  font-weight: bold;
+}
+.sub-total .price span {
+  font-size: 16px;
+}
+
+.payment-method {
+  margin-top: 60px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  background-color: #fff;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 80px;
+}
+
+.payment-dropdown-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+}
+
+.payment-dropdown {
+  width: 100%;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.payment-options {
+  margin-left: 20px;
+  margin-top: 10px;
+  display: none;
+}
+
+.payment-options label {
+  display: block;
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.pay-button {
+  padding: 10px 20px;
+  background-color: #f8d146;
+  color: black;
+  border: 1px solid #f8d146;
+  cursor: pointer;
+  font-family: "Poppins", sans-serif;
+  margin-top: 20px;
+  width: 100%;
+  font-weight: bold;
+  margin-bottom: 30px;
+  font-size: 30px;
+}
+
+.pay-button:hover {
+  background-color: black;
+  color: #f8d146;
+  border: 1px solid black;
+  font-weight: bold;
+}
+
+.dropdown-box {
+  border: 1px solid lightgray;
+  padding: 10px;
+  font-family: "Poppins", sans-serif;
+  font-size: 16px;
+  background-color: white;
+  cursor: pointer;
+  position: relative;
+  align-items: center;
+}
+
+.dropdown-box svg {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+.dropdown-box span {
+  vertical-align: middle;
+}
+
+.dropdown-box .option {
+  display: none;
+  margin-top: 10px;
+}
+
+.dropdown-box.open .option {
+  display: block;
+}
+
+.dropdown-box .option img {
+  width: 200px;
+  height: 200px;
+}
+
+.circle-button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: 1px solid black;
+  background-color: lightgray;
+  cursor: pointer;
+  position: absolute;
+  right: 10px;
+}
+
+.circle-button.selected {
+  background-color: #f8d146;
+}
+
+.option-label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  margin-top: 10px;
+  position: relative;
+  padding-right: 25px;
+  padding-left: 25px;
+  margin-bottom: 30px;
+}
+
+.yellow-square {
+  width: 30px;
+  height: 30px;
+  background-color: #f8d146;
+  display: inline-block;
+  margin-right: 10px;
+  border: 2px solid black;
+}

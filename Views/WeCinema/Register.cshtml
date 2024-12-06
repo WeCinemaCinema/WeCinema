@@ -1,0 +1,61 @@
+<link rel="stylesheet" href="~/css/register.css"/>
+
+<div>
+    <div class="bigContainer">
+        <div class="leftSide">
+            <img src="~/img/registerBg.png" class="imageReg"/>
+        </div>
+        <div class="rightSide">
+            <div class="headerRegister">
+                <h1>Register</h1>
+                <h3 class="WeCinemaTxt">We<span class="cinemaTxt">Cinema</span></h3>
+            </div>
+
+            <form method="post" asp-action="DoRegisterUser" class="formFlex">
+                <div class="inputFlex">
+                    <label for="name" class="labelTxt">Name</label>
+                    <input type="text" name="name" placeholder="Name" class="inputTxt"/>
+                </div>
+
+                <div class="inputFlex">
+                    <label for="phoneNum" class="labelTxt">Phone Number</label>
+                    <input type="text" name="phoneNum" placeholder="08xxxxxxxxx" class="inputTxt" />
+                </div>
+
+                <div class="inputFlex">
+                    <label for="email" class="labelTxt">Email Address</label>
+                    <input type="email" name="email" placeholder="xxxx@gmail.com" class="inputTxt" />
+                </div>
+
+                <div class="inputFlex">
+                    <label for="password" class="labelTxt">Password</label>
+                    <input type="password" name="password" placeholder="xxxxxxxxx" class="inputTxt"/>
+                </div>
+
+
+                @if(ViewData["ErrorMessage"] != null)
+                {
+                    <p class="errorTxt">@ViewData["ErrorMessage"]</p>
+                }
+
+                <input type="submit" value="Register" class="registerButton"/>
+            </form>
+
+            <p class="otherTxt">Other way to Register</p>
+
+            <div class="loginMiddle">
+                <a asp-controller="Login" asp-action="Register">
+                     <div class="greyCircle">
+                        <img src="~/img/google.png" class="google"/>
+                    </div>
+                </a>
+            </div>
+
+
+            <p class="askingAccTxt">Already have an account?  <a href="login" class="loginHereTxt">Login here</a> </p>
+        </div>
+    </div>
+</div>
+
+
+

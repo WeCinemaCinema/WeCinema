@@ -1,0 +1,158 @@
+@using ITDIV_TICKET.Models
+@using System.Globalization;
+@model MoviesModel
+@inject MovieService _movieService
+
+@{
+  Layout = null;
+  var locations = await _movieService.GetAllLocation();
+
+  CultureInfo culture = new CultureInfo("id-ID"); // Indonesian culture
+}
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="~/css/location.css" />
+
+<div class="loc-container">
+  <!-- Left container -->
+  <div class="left-loc-container">
+    <div class="logo">
+      <a style="text-decoration: none;" href="/wecinema/">
+        <span class="we">We</span><span class="cinema">Cinema</span>
+      </a>
+    </div>
+    <div class="movie-poster">
+      <img src="@($"https://image.tmdb.org/t/p/w500{Model.ImageUrl}")" alt="Wicked Poster">
+      <button class="play-button" onclick="openTrailer()">
+        <div class="triangle"></div>
+      </button>
+    </div>
+    <div class="tabs">
+      <span class="tab active" id="synopsis-tab">Sinopsis</span>
+      <span class="tab" id="cast-tab">Cast</span>
+    </div>
+    <div class="content" id="content">
+      <p>
+        @Model.Description
+      </p>
+    </div>
+  </div>
+
+  <!-- Right container -->
+  <div class="right-loc-container">
+
+    <div class="steps">
+      <!--Dropdown lokais -->
+      <div class="dropdown-container">
+        <div class="svg-container">
+          <svg width="29" height="36" viewBox="0 0 29 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M14.4998 33.9001C14.4998 33.9001 27.3346 22.4914 27.3346 13.9349C27.3346 6.84642 21.5883 1.1001 14.4998 1.1001C7.41137 1.1001 1.66504 6.84642 1.66504 13.9349C1.66504 22.4914 14.4998 33.9001 14.4998 33.9001Z"
+              stroke="#F8D146" stroke-width="2" />
+            <path
+              d="M18.6003 13.4004C18.6003 15.6647 16.7647 17.5004 14.5003 17.5004C12.236 17.5004 10.4003 15.6647 10.4003 13.4004C10.4003 11.136 12.236 9.30036 14.5003 9.30036C16.7647 9.30036 18.6003 11.136 18.6003 13.4004Z"
+              stroke="#F8D146" stroke-width="2" />
+          </svg>
+        </div>
+        <select class="location-dropdown">
+          <option selected value="all">All Location</option>
+          <option value="jakarta">Jakarta</option>
+          <option value="bali">Bali</option>
+          <option value="Jogjakarta">Jogjakarta</option>
+          <option value="Surabaya">Surabaya</option>
+        </select>
+      </div>
+      <div class="steps-2">
+        <div class="step active" id="location-step">
+          <span class="number">01</span> <span>Select Location</span>
+        </div>
+        <a class="step" id="seat-step">
+          <span class="number">02</span> <span>Select Seat</span>
+        </a>
+        <a class="step" id="purchase-step">
+          <span class="number">03</span> <span>Purchase</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="loc-banner">
+      <img src="@($"https://image.tmdb.org/t/p/w500{Model.ImageUrl}")" alt="Wicked Banner">
+    </div>
+    <div class="locations">
+      @foreach (var location in locations)
+      {
+        <a class="location" asp-action="OrderTicket" asp-controller="WeCinema" asp-route-locationId="@location.Cinema_id"
+          asp-route-id="@Model.Movie_id">
+          <div class="location-info">
+            <h3>@location.Location</h3>
+            <p>@location.Name</p>
+          </div>
+          @{
+            string formattedAmount = location.Price.ToString("N", culture);
+          }
+          <div class="price">
+            <span class="rp">Rp</span><span class="amount">@formattedAmount</span>
+          </div>
+        </a>
+      }
+    </div>
+  </div>
+</div>
+
+
+<script>
+  function filterLocations() {
+    const selectedLocation = document.querySelector('.location-dropdown').value.toLowerCase();
+    const locationCards = document.querySelectorAll('.location');
+
+
+    locationCards.forEach(card => {
+      const locationName = card.querySelector('.location-info h3').textContent.toLowerCase();
+
+      if (selectedLocation === 'all' || locationName.includes(selectedLocation)) {
+        card.style.display = '';
+
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  document.querySelector('.location-dropdown').addEventListener('change', filterLocations);
+
+  window.onload = filterLocations;
+
+  document.getElementById('synopsis-tab').addEventListener('click', () => {
+    document.getElementById('content').innerHTML = `
+      <p>
+        @Model.Description
+      </p>
+    `;
+    setActiveTab('synopsis-tab');
+  });
+
+  document.getElementById('cast-tab').addEventListener('click', () => {
+    document.getElementById('content').innerHTML = `
+      <p>
+        <strong>Director:</strong> <br>
+        @Model.Director<br><br>
+        <strong>Cast</strong> <br>
+        @Model.Cast<br><br>
+        <strong>Genre</strong><br>@Model.Genre<br><br> 
+      </p>
+    `;
+    setActiveTab('cast-tab');
+  });
+
+  function setActiveTab(tabId) {
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.classList.remove('active');
+    });
+    document.getElementById(tabId).classList.add('active');
+  }
+
+  function openTrailer() {
+    const youtubeTrailerURL = '@Model.TrailerUrl';
+    window.open(youtubeTrailerURL, '_blank'); 
+  }
+</script>

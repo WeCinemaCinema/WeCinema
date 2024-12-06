@@ -1,0 +1,56 @@
+@using ITDIV_TICKET.Models
+@using System.Globalization;
+@model List<HistoryModel>
+
+<link rel="stylesheet" href="~/css/history.css">
+
+<div class="historyFlex">
+    @if(!Model.Any())
+    {
+        <div class="no-results">
+            <p class="noResultTxt">No History found.</p>
+        </div>
+    }
+
+    @foreach(var history in Model)
+    {
+        <div class="historyCard">
+            <div class="leftSide">
+                <img class="imageSrc" src="@($"https://image.tmdb.org/t/p/w500{history.Movie_image_url}")"/>
+            </div>
+            <div class="rightSide">
+                <p class="titleTxt">@history.Movie_title</p>
+                <hr>
+                <div class="flexTxt">
+                    <div>
+                        <p>Booking Id</p> 
+                        <p> Seat </p>    
+                    </div>
+                    <div>
+                        <p>: <span class="bolded">@history.Booking_id</span></p>
+                        <p>: <span class="bolded">@history.Seat_number</span></p>
+                    </div>
+                </div>
+
+                    
+
+                <div>
+                    <p class="aligned"><img class="icons" src="~/img/marker-02.png"/><span class="bolded">@history.Cinema_name</span></p>
+                    <p class="bolded aligned"><img class="icons" src="~/img/calendar-02.png"/>@history.Show_date_time</p>
+                    <p class="bolded aligned"><img class="icons" src="~/img/alarm-01.png"/>20:00</p>
+                </div>
+
+                <div class="bottomSection">
+                    <p>Total</p>
+
+                    @{
+                        CultureInfo culture = new CultureInfo("id-ID"); 
+                        string formattedAmount = history.TotalPrice.ToString("N2", culture);
+                    }
+
+                    <p>Rp <span class="bolded bigTxt">@formattedAmount</span></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

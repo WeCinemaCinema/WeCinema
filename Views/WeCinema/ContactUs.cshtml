@@ -1,0 +1,65 @@
+@using System.Security.Claims
+
+<link rel="stylesheet" href="~/css/contact.css"/>
+
+@{
+    var currUser = User.FindFirstValue(ClaimTypes.Email);
+}
+
+<div class="container"> 
+    <div class="leftSide">
+        <h1>Contact Us</h1>
+        <div class="whiteLine"></div>
+        <p class="txtDesc">
+            Have questions or need <br> assistance? 
+            We're here to help! <br>
+            Reach out to WeCinema at
+        </p>
+
+        <div class="flexRow">
+            <img class="icon" src="~/img/Mail.png"/>
+            <p class="greyTxt">feedback@wecinema.co.id</p>
+        </div>
+        <div class="flexRow">
+            <img class="icon" src="~/img/Phone.png"/>
+            <p class="greyTxt">08xxxxxxx</p>
+        </div>
+
+
+        <p class="txtDesc">
+            Your perfect movie experience is just a 
+            message away!
+        </p>
+    </div>
+    <div class="rightSide">
+        <form method="post" asp-action="ContactForm" class="formFlex">
+            <label for="name" class="labelTxt">Name</label>
+            <input readonly type="text" name="name" placeholder="John Doe" class="inputName input" value="@currUser" />
+
+            <label for="email" class="labelTxt">Email Address</label>
+            <input readonly type="email" name="email" placeholder="xxxx@gmail.com" class="inputEmail input" value="@currUser"/>
+
+            <label for="message" class="labelTxt">Message</label>
+            <textarea placeholder="Type message" name="message" class="inputMessage"></textarea>
+            
+            @if(ViewData["ErrorMessage"] != null)
+            {
+                <p class="errorTxt">@ViewData["ErrorMessage"]</p>
+            }
+
+            <div class="middleBox">
+                <input type="submit" value="Submit" class="submitButton" id="button"/>
+            </div>
+
+        </form>
+    </div>
+</div>
+
+<script>
+    const form = document.querySelector('form');
+    const button = document.getElementById("button");
+    
+    form.addEventListener("submit", () =>{
+        button.setAttribute("disabled", true);
+    });
+</script>

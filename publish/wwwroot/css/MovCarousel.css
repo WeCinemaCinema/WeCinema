@@ -1,0 +1,260 @@
+.movie-carousel {
+  margin: 2em 0;
+  display: flex;
+}
+.title-1 {
+  font-size: 20px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  text-decoration: none;
+}
+
+.title-2 {
+  text-align: center;
+  gap: 20px;
+  font-size: 13px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.text-1 {
+  text-decoration: none;
+  font-size: 2em;
+  text-align: center;
+  color: black;
+  font-weight: bold;
+  transition: none;
+}
+
+.title-2 button {
+  text-decoration: none;
+  font-size: 2em;
+  color: rgb(128, 128, 128);
+  font-weight: bold;
+  border: none;
+  background: none;
+  text-decoration: underline 0.15em rgba(255, 255, 255, 0);
+  text-underline-offset: 0.3em;
+  transition: text-decoration-color 300ms;
+  cursor: pointer;
+}
+
+.title-2 button.active {
+  text-decoration-color: black;
+  color: rgb(0, 0, 0);
+}
+
+.tabcontent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0 3rem 0;
+  overflow-y: auto;
+  
+}
+ 
+.title {
+  width: 100vw;
+}
+
+
+.containerMovie {
+  width: 100%;
+  height: 70vh;
+  display: block;
+  flex-direction: row;
+  justify-content: flex-start;
+  overflow-y: hidden;
+  white-space: nowrap;
+ 
+}
+
+.movieCard {
+ 
+  width: 20%;
+  height: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 1rem;
+  text-decoration: none;
+  color:black;
+}
+
+.imageSrc {
+  background-color: rgb(10, 25, 46);
+  color: aliceblue;
+  height: 80%;
+  width: 90%;
+  margin-top: 0.5rem;
+  border-radius: 2%;
+}
+
+.subTxt {
+  width: 100%;
+  overflow-wrap: anywhere;
+  text-align: center;
+  margin-bottom: 0;
+  height: fit-content;
+}
+
+.subTxt p {
+  margin-top: 0;
+  margin-bottom: 0 !important;
+  overflow-wrap: anywhere;
+}
+
+.mov-title {
+  text-decoration: none;
+  color:black;
+  font-size: 1rem;
+  font-weight: bold;
+ 
+  text-align: center;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: normal;
+}
+
+.genre {
+  color: gray;
+  font-size: 0.8rem;
+}
+
+.discount {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding-bottom: 5rem;
+ 
+  margin: 0;
+  align-items: stretch;
+  position: relative;
+ 
+}
+
+.discDesc {
+  display: flex;
+  flex-direction: column;
+  flex: 0.5;
+  width: 50%;
+  justify-content: space-evenly;
+  background-color: #F8D146;
+ 
+  padding-top: 3rem;
+  position: relative;
+}
+
+.discDesc p {
+  text-align: end;
+  padding: 0rem 2rem 0 0rem;
+}
+
+#discTitle-1{ 
+  font-size: 500%; 
+  font-weight: bolder;
+  color: rgb(0, 0, 0);
+  text-transform: uppercase;
+  word-wrap: break-word;
+  line-height: 2.5rem;
+}
+#discTitle-2{
+  font-size: 4rem;
+  font-weight: 1000;
+  color: rgb(255, 255, 255);
+  text-transform: uppercase;
+  word-wrap: break-word;
+  padding-left: 8rem;
+  line-height: 4rem;
+}
+
+#discTitle-3{
+  word-wrap: break-word;
+  padding-left: 8rem;
+  margin-bottom: 0;
+}
+
+.discount img {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  height: auto;
+  display: block;
+  z-index: 1;
+  position: relative;
+}
+
+.promotions{
+  position: absolute;
+  right: 2rem;
+  bottom: 0;
+  background: none;
+  outline: none;
+  border: 2px solid black;
+  font-weight: bold;
+  margin-bottom: 3rem;
+}
+
+.left-disc{
+  flex: 0.5;
+  position: relative;
+  display: inline-flex;
+}
+
+.text-disc-left{
+  z-index: 3;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.overlay-disc{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  z-index: 2;
+}
+
+.text-disc-left p{
+  color: white;
+}
+
+#text-left-1{
+  font-size: 4rem;
+  font-weight: bolder;
+}
+
+#text-left-2{
+  font-size: 2rem;
+  font-weight: bolder;
+}
+
+#text-left-3{
+  font-size: 4rem;
+  font-weight: bolder;
+}
+
+#text-left-4{
+  font-size: 1rem;
+}
+
+#text-left-4::before{
+  content: "*";
+}
+

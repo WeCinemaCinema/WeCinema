@@ -1,0 +1,389 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\ITDIV_TICKET.bundle.scp.css",
+      "PackagePath": "staticwebassets\\ITDIV_TICKET.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\SVG\\promotion.svg",
+      "PackagePath": "staticwebassets\\SVG\\promotion.svg"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\Index.css",
+      "PackagePath": "staticwebassets\\css\\Index.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\MovCarousel.css",
+      "PackagePath": "staticwebassets\\css\\MovCarousel.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\OrderTicket.css",
+      "PackagePath": "staticwebassets\\css\\OrderTicket.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\Term&Conditions.css",
+      "PackagePath": "staticwebassets\\css\\Term&Conditions.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\aboutUs.css",
+      "PackagePath": "staticwebassets\\css\\aboutUs.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\contact.css",
+      "PackagePath": "staticwebassets\\css\\contact.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\history.css",
+      "PackagePath": "staticwebassets\\css\\history.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\leftOrder.css",
+      "PackagePath": "staticwebassets\\css\\leftOrder.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\location.css",
+      "PackagePath": "staticwebassets\\css\\location.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\movie.css",
+      "PackagePath": "staticwebassets\\css\\movie.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\payment.css",
+      "PackagePath": "staticwebassets\\css\\payment.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\privacy.css",
+      "PackagePath": "staticwebassets\\css\\privacy.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\promotion.css",
+      "PackagePath": "staticwebassets\\css\\promotion.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\register.css",
+      "PackagePath": "staticwebassets\\css\\register.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\seat.css",
+      "PackagePath": "staticwebassets\\css\\seat.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\img\\Mail.png",
+      "PackagePath": "staticwebassets\\img\\Mail.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\img\\Phone.png",
+      "PackagePath": "staticwebassets\\img\\Phone.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\img\\alarm-01.png",
+      "PackagePath": "staticwebassets\\img\\alarm-01.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\img\\calendar-02.png",
+      "PackagePath": "staticwebassets\\img\\calendar-02.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\img\\cek2.png",
+      "PackagePath": "staticwebassets\\img\\cek2.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\img\\glass.png",
+      "PackagePath": "staticwebassets\\img\\glass.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\img\\google.png",
+      "PackagePath": "staticwebassets\\img\\google.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\img\\imgKiri.png",
+      "PackagePath": "staticwebassets\\img\\imgKiri.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\img\\marker-02.png",
+      "PackagePath": "staticwebassets\\img\\marker-02.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\img\\registerBg.png",
+      "PackagePath": "staticwebassets\\img\\registerBg.png"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\js\\Index.js",
+      "PackagePath": "staticwebassets\\js\\Index.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\js\\Location.js",
+      "PackagePath": "staticwebassets\\js\\Location.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\js\\OrderTicket.js",
+      "PackagePath": "staticwebassets\\js\\OrderTicket.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\js\\Payment.js",
+      "PackagePath": "staticwebassets\\js\\Payment.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\js\\SeatSelection.js",
+      "PackagePath": "staticwebassets\\js\\SeatSelection.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Lenovo\\Documents\\ITDIV_TICKET\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.ITDIV_TICKET.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.build.ITDIV_TICKET.props",
+      "PackagePath": "build\\ITDIV_TICKET.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.ITDIV_TICKET.props",
+      "PackagePath": "buildMultiTargeting\\ITDIV_TICKET.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildTransitive.ITDIV_TICKET.props",
+      "PackagePath": "buildTransitive\\ITDIV_TICKET.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

@@ -1,0 +1,200 @@
+﻿@using System.Security.Claims
+@inject MovieService _movieService
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ITDIV_TICKET</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ITDIV_TICKET.styles.css" asp-append-version="true" />
+    <link href='https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap' rel='stylesheet'>
+
+</head>
+
+<body>
+    @{
+        var currEmail = User.FindFirstValue(ClaimTypes.Email);
+        var currModel = (currEmail is null) ?  null : await _movieService.GetUser(currEmail) ;
+        var username = (currModel is null)?  "none" : currModel.Username ;
+        var email= (currModel is null)?  "none" : currModel.Email ;
+        var phone_num= (currModel is null)?  "none" : currModel.Phone_number ;
+    }
+    <header>
+        <div class="dropdown-content">
+            @if(User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                <p class="welcome"> <span class="highlight">Name:</span> @username</p>
+                <p class="welcome"> <span class="highlight">Phone:</span> @phone_num</p>
+                <p class="welcome"> <span class="highlight">Email:</span> @email</p>
+                <a id="logout" asp-action="Logout" asp-controller="WeCinema">Logout</a>
+            }
+            else
+            {
+                <a id="login" href="/wecinema/login">Login</a>
+                <a id="register"href="/wecinema/Register">Register</a>
+            }
+        </div>
+        <div class="navbar">
+            <div class="right-navbar">
+                <a href="/wecinema">Home</a>
+                <a href="/wecinema/Movie">Movie</a>
+                <a href="/wecinema/Promotions">Promotions</a>
+                <a href="/wecinema/History">History</a>
+                <a href="/wecinema/ContactUs">Contact Us</a>
+            </div>
+
+            <div class="logo">
+                <span class="we">We</span><span class="cinema">Cinema</span>
+            </div>
+
+            <div class="left-navbar">
+                <form class="search-bar" method="get" asp-action="Movie">
+                    <button class="iconGlassButton">
+                        <img src="~/img/glass.png" class="iconGlass"/>
+                    </button>
+                    <input type="text" name="query"  style="padding-left: 35px;" class="searchSection">
+                </form>
+
+                <button class="dropdown-icon-acc">
+                    <svg class="svg-dropdown" style="position: relative; z-index: 0;" width=" 32" height="32" viewBox="0 0 39 39" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M7.125 33C7.98969 32.0316 12.0395 27.575 13.2263 27.575H25.7745C27.4943 27.575 31.0049 31.2692 31.875 32.5714M37.5 19.5C37.5 29.4411 29.4411 37.5 19.5 37.5C9.55887 37.5 1.5 29.4411 1.5 19.5C1.5 9.55887 9.55887 1.5 19.5 1.5C29.4411 1.5 37.5 9.55887 37.5 19.5ZM25.9478 13.3649C25.9478 9.93084 23.0488 7.125 19.5005 7.125C15.9523 7.125 13.0533 9.93084 13.0533 13.3649C13.0533 16.799 15.9523 19.6048 19.5005 19.6048C23.0487 19.6048 25.9478 16.799 25.9478 13.3649Z"
+                            stroke="black" stroke-width="2" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        </div>
+    </header>
+    <div class="container-body">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container-footer">
+            <div class="firstRow-footer">
+                <div class="logoFooter">
+                    <h3>We<span>Cinema</span></h3>
+                </div>
+                <div class="linkFooter">
+                    <a href="/wecinema/aboutus">About Us</a>
+                    <a href="/wecinema/privacy">Privacy Policy</a>
+                    <a href="/wecinema/term">Term and Conditions</a>
+                    <a href="/wecinema/ContactUs">Contact Us</a>
+                </div>
+            </div>
+            <div class="garis">
+                <hr>
+            </div>
+            <div class="icon-footer">
+                <div>
+                    <!-- instagram -->
+                    <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <circle cx="23.5" cy="23.5" r="23.5" fill="white" />
+                        <rect x="7" y="7" width="34" height="34" fill="url(#pattern0_335_1240)" />
+                        <defs>
+                            <pattern id="pattern0_335_1240" patternContentUnits="objectBoundingBox" width="1"
+                                height="1">
+                                <use xlink:href="#image0_335_1240" transform="scale(0.0104167)" />
+                            </pattern>
+                            <image id="image0_335_1240" width="96" height="96"
+                                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFVklEQVR4nO2dy49URRSHv1lIjwtHhseMCYoz0Z1BBd2hIRoDMRnCqAMi/ANE0CGsfCQ8fCK60Ghi3LohhrhBUVkgGyODuraHgdUAJuqAUQwCI5Qpc0xcdN3uvl2nbnVXfckvmfSkb506p27duqceDZlMJpPJZDKZTCaTyWR0GATGgbeBI8A0cBG4CpiKdFVsqItN1rYNwMJeaQQ1YCtwFPi7QkebNmVt/RLYInXoOm4GdgHnI3Cm6VDngJ1AP13C48CZCBxnPOs0sI6IsbfqexE4yijrY7nDo2IY+CEC55hA+g4YIhJG5PY0iWlG6l4pS2U4aRLVGeC2qpzfn1i3Ywq6o0qGqh9GUHkTid6vYqhZdaVNZFobyvn2djsVQYVNZDod6mVtVwSVNZFqMkTrPxdBRU2kOqv9QN4aQSWNgmaBp4BbROMdDK+f0QzA0R51/iJH+ny2xPW+0HL+YJellE2Lsi3fxcYS15sHBjQCMB6Bs4yCbJfjYqDkNddrBOCdCp10HTgBvA48Cdwjd+RNokH5zLbmN4Ap+U6nAbi1pL0HNALweUWjiheAZSXsvR14sYVR2xMF19hU0u7PUGAmoOPngG3AAg9222Hhs8AFR1nTjofwImkAZey31/TOXCDnHwQWK9i/BPik4E7bKH3+gHRznTS4XxXsV1+9MC+tXpvtUpZmXa5oGK5p8GVgjHCslzI16+QdzZY/1kL5fcADwCvAceln/xTV5bN9wKo2gqB5J3hHy9BtLTh+U5sZWBucCfluETtSD8DBJmXeBZzs4Pr23WG0SRmHUg3ABRmZuHgI+NlDOXb09mhBOYuVRnjeCdn1PAJc81iWHcGtCdwVecencWcLXrJGgV8UHGJb+d0B5zmiDoBNLzSir8M+v5m+LXgwv5RKAGyS7A5HGU8rOr9Z+nmZ53R7tAGwI5NG9AWa7LfvDC5OphCA1xzXfzCA8//TSocN+1MIgCv9+2rAAOx12DCRQgDsxEkjjgcMwDGHDStSCECj3Hvo+QZXvn5JCgFwjf8vBQyALcv1PpBsAP4IGIDfUw6Aqws6FTAA9ZS7INdD+OuAAUj6IWznWxuxL2AAdntciNV1AbBrexqxKmAA7nPY8FYKAbCLplypiOkAzv+xoI7fp56MmwgQANeb+PI2VtN1dQCMrFhz3QUnFJ3/TUE6+mXPZXkn1EaGEcUJGTvH3IiawrkWUQfAyHJBF2s8LwSz13rYWRo8r1A/72hMyi8tKG+1x0l5O8fsYkjODEouAEbWahYxKtOInfT5zY4T+FSpbt4xStrepNw+mUastznUdL3w/Z9JxXp5R8vQ+TZ2lKyUyZRjEpBLorp8tge4v8VrbVDecuUdo6jLWtt6Cpz/l3KdunJ5+g70mQyw2fBKN2/QOKR0GNKw4gM3yAaNkPn6i3I3+Nh13i/j/N8C2l+09KWrNumdlxVrrtxREcslvfBTBXYfVvD/v4eamop0XRZNvSkJuxUys7ZAZP++V/63Xw5R8plYa1c2re2dXt2obRSkst1qYY8eVWA865rWUQWWryKooIlc9lmpxpYIKmgi12bNAOQDmyi98cQbOyNoZSZSPUcAaokf1mocmgl5fui6CCpsItIN4DEC80EEFTeR6F0qoCZvnCZxTYV48FKwmDX1w7uHqZiRwJsrTCSy2eE7iYShxLqjqSYrOir9CZMbETjIKOqj2H9ZaW2PdknTVQw1y1KTudeyh96ZiDQrb7hRt3oXNTlL+UiAc9qMR81LVnNzlUNM3wzI0pMDcq5mXSb6q/4pwzlZyHVYZrLGmhzmmslkMplMJpPJZDKZTIay/ANpcAF8ihd/DgAAAABJRU5ErkJggg==" />
+                        </defs>
+                    </svg>
+                </div>
+
+                <div>
+                    <!-- Twitter -->
+                    <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <circle cx="23.5" cy="23.5" r="23.5" fill="white" />
+                        <rect x="7" y="7" width="33" height="34" fill="url(#pattern0_335_1577)" />
+                        <defs>
+                            <pattern id="pattern0_335_1577" patternContentUnits="objectBoundingBox" width="1"
+                                height="1">
+                                <use xlink:href="#image0_335_1577"
+                                    transform="matrix(0.0104167 0 0 0.0101103 0 0.0147059)" />
+                            </pattern>
+                            <image id="image0_335_1577" width="96" height="96"
+                                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFXElEQVR4nO2dW6ydQxTHf4e2QlWLoG4P9IISxKXuIuFF0FA8eZJGSFoiLi19cEnj0ngQTVOOIBERiSdxqfa0JEVCSxMScT0uCRJ6NKI9bYOejozMZrI6x77NzDff3uufrJe9157vm/9/Lt+aWfNtUCgUCoVCoVAoFAqFQqFQKDrHCcASYD3wOTAKmJraqKvDOmAxMLvkhnEW8FYBpJnEZhvWmRSEicBKYE8B5JhMZuu6AphQNfkHA28XQIipsDdMq7Ll98OQY5rYBmBSFQKsLKDyphB7oooJt5/GfNPE9uSemHXoYS8R7KNqFpxYQIszhVqWOOGeAipqCrW7cwiwroCKmkJtKIcAXxVQUVOofZFDgO0FVNQUapab5Ki6kqZwUwFQASpvhUZ7QJiEEWB6B3HHjsiEbgYO9K5xRsS5rfghaA0w0OY1F0Yk/0fgGK/so4Ef+m0OuLnNaw4Ar0e47u/AqV65BwGfRO5dyRFrq2+2V+a+wHJgUNhxns+Rbgjr9Jp/ApeK5fShyOTXRgBrHzkSGrgu4POeE6eBqyP2uicTkF8rAQzwoCj7xYDPUuHzXITrLE1Efu0E+As4zyt7KvB9wGeu5zO5zeWQl8Skfz0wpgL8R9A3wBSPoIuA3YIgmxpygOdzfsAnZO8A+3m/uxDYlZD82vUA4+xpcY3HAj52C9THQ03KtKId4vkfD/ySmPzaCmCAa71r2Fb7cWDb7wrPx6aEbBynLPu0NNPzPRT4MgP5tRZgi4iS5wA7hY9twUc0iZJ3inllUubUmdoKYIA3xYR5e8DnFXE/i7zv7OQ63/vOlvVCRvJrL4ARz+uWwNUBnwXC5w33+R3iXh/OTH5PCDAKzBJrNVuFj104m+H5HAUsE/e5oALye0IAE4iS5wd8NgkfH5cAf6gA3YnwgCD1+YDPfQHy7eT9W0Xk90wPMC4CPkesXH4X8Dlb3N+GCsnvKQFMIEq+IBABD7fgowJ0QcKgaACPBHyeasFHe0AXJFzlkTvRTcCd+OgQFClKPikQAYd8ZCStAkSMkhe14HOrChCv1b0rnvsHHOHNIum12gO6J38YOCzwRHZ4YIl5hzsq60fJv+oQ1Dn5I2JpeYo4nRiKkjcKn9B+cypLjpwT2i73XN/ARDek3C/u6dkW9oFDkbQKwPgk2A2YGwSJq7wI+Nwm+8R2afpiz8dmwn2tArTe6pYI8u9tEgGH9olbiaR1CGJvEp4R5I+XySAj4GUtlJU6Sk6O1GPoGjGBzm2SnOtHwPZ3HwR8rIC5ouRaC/Cpyw1qJ5Nhi9gnnhHIdB5xqY05ouTaCvATcGyHmQyrRQR8S8BnrfC5TQXgX3K2Aad3mclwk2gorwZ8bJp7s/3mvusBu4F5ETIZZMa1jZx/DsQVpySOkmsnwMI2M97+zz4U60WXB95psVm83eSafhZguSj7xghlyn3iwYCPFTlVlJwcsW70ZWAfr9zL3CGKbsuV+8STXV6pf/BjlXjR0tTAfnNPC7BJZDvPiZzJMCwO4bWCWFFycnR7g9+6ZeQGpgfOBMQwewKmXTza6wJsFWv1+wPvJyC/YVe2WbcYUXJypCLL9IipAKgAlbdC08s9YFsBlTSFmj0Inhy5jvqYGpo9l5Yc+soyxhXArrgmx+ICWpop1O7MIcDMAipqCjX/ZE9SrC+gsqYfh58GTkt83N/UzMbcS5+yYkUBFTeF2ONUAJuBoEMR/zwVVvZHDtP6XIShKv/AoYEJ7v35/TQnjLlhp/K/MPFxMvBaAeSYDENO9gm3HcxybxEfcqF5nV91vB34zD1i3iXS5BUKhUKhUCgUCoVCoVAoFArawd98MsFEiyLoOwAAAABJRU5ErkJggg==" />
+                        </defs>
+                    </svg>
+                </div>
+
+                <div>
+                    <!-- Whatsapp -->
+                    <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <circle cx="23.5" cy="23.5" r="23.5" fill="white" />
+                        <rect x="7" y="7" width="33" height="34" fill="url(#pattern0_335_1577)" />
+                        <defs>
+                            <pattern id="pattern0_335_1577" patternContentUnits="objectBoundingBox" width="1"
+                                height="1">
+                                <use xlink:href="#image0_335_1577"
+                                    transform="matrix(0.0104167 0 0 0.0101103 0 0.0147059)" />
+                            </pattern>
+                            <image id="image0_335_1577" width="96" height="96"
+                                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAFXElEQVR4nO2dW6ydQxTHf4e2QlWLoG4P9IISxKXuIuFF0FA8eZJGSFoiLi19cEnj0ngQTVOOIBERiSdxqfa0JEVCSxMScT0uCRJ6NKI9bYOejozMZrI6x77NzDff3uufrJe9157vm/9/Lt+aWfNtUCgUCoVCoVAoFAqFQqFQKDrHCcASYD3wOTAKmJraqKvDOmAxMLvkhnEW8FYBpJnEZhvWmRSEicBKYE8B5JhMZuu6AphQNfkHA28XQIipsDdMq7Ll98OQY5rYBmBSFQKsLKDyphB7oooJt5/GfNPE9uSemHXoYS8R7KNqFpxYQIszhVqWOOGeAipqCrW7cwiwroCKmkJtKIcAXxVQUVOofZFDgO0FVNQUapab5Ki6kqZwUwFQASpvhUZ7QJiEEWB6B3HHjsiEbgYO9K5xRsS5rfghaA0w0OY1F0Yk/0fgGK/so4Ef+m0OuLnNaw4Ar0e47u/AqV65BwGfRO5dyRFrq2+2V+a+wHJgUNhxns+Rbgjr9Jp/ApeK5fShyOTXRgBrHzkSGrgu4POeE6eBqyP2uicTkF8rAQzwoCj7xYDPUuHzXITrLE1Efu0E+As4zyt7KvB9wGeu5zO5zeWQl8Skfz0wpgL8R9A3wBSPoIuA3YIgmxpygOdzfsAnZO8A+3m/uxDYlZD82vUA4+xpcY3HAj52C9THQ03KtKId4vkfD/ySmPzaCmCAa71r2Fb7cWDb7wrPx6aEbBynLPu0NNPzPRT4MgP5tRZgi4iS5wA7hY9twUc0iZJ3inllUubUmdoKYIA3xYR5e8DnFXE/i7zv7OQ63/vOlvVCRvJrL4ARz+uWwNUBnwXC5w33+R3iXh/OTH5PCDAKzBJrNVuFj104m+H5HAUsE/e5oALye0IAE4iS5wd8NgkfH5cAf6gA3YnwgCD1+YDPfQHy7eT9W0Xk90wPMC4CPkesXH4X8Dlb3N+GCsnvKQFMIEq+IBABD7fgowJ0QcKgaACPBHyeasFHe0AXJFzlkTvRTcCd+OgQFClKPikQAYd8ZCStAkSMkhe14HOrChCv1b0rnvsHHOHNIum12gO6J38YOCzwRHZ4YIl5hzsq60fJv+oQ1Dn5I2JpeYo4nRiKkjcKn9B+cypLjpwT2i73XN/ARDek3C/u6dkW9oFDkbQKwPgk2A2YGwSJq7wI+Nwm+8R2afpiz8dmwn2tArTe6pYI8u9tEgGH9olbiaR1CGJvEp4R5I+XySAj4GUtlJU6Sk6O1GPoGjGBzm2SnOtHwPZ3HwR8rIC5ouRaC/Cpyw1qJ5Nhi9gnnhHIdB5xqY05ouTaCvATcGyHmQyrRQR8S8BnrfC5TQXgX3K2Aad3mclwk2gorwZ8bJp7s/3mvusBu4F5ETIZZMa1jZx/DsQVpySOkmsnwMI2M97+zz4U60WXB95psVm83eSafhZguSj7xghlyn3iwYCPFTlVlJwcsW70ZWAfr9zL3CGKbsuV+8STXV6pf/BjlXjR0tTAfnNPC7BJZDvPiZzJMCwO4bWCWFFycnR7g9+6ZeQGpgfOBMQwewKmXTza6wJsFWv1+wPvJyC/YVe2WbcYUXJypCLL9IipAKgAlbdC08s9YFsBlTSFmj0Inhy5jvqYGpo9l5Yc+soyxhXArrgmx+ICWpop1O7MIcDMAipqCjX/ZE9SrC+gsqYfh58GTkt83N/UzMbcS5+yYkUBFTeF2ONUAJuBoEMR/zwVVvZHDtP6XIShKv/AoYEJ7v35/TQnjLlhp/K/MPFxMvBaAeSYDENO9gm3HcxybxEfcqF5nV91vB34zD1i3iXS5BUKhUKhUCgUCoVCoVAoFArawd98MsFEiyLoOwAAAABJRU5ErkJggg==" />
+                        </defs>
+                    </svg>
+                </div>
+
+                <div>
+                    <!-- titkok -->
+                    <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <circle cx="23.5" cy="23.5" r="23.5" fill="white" />
+                        <rect x="6" y="7" width="34" height="34" fill="url(#pattern0_335_1939)" />
+                        <defs>
+                            <pattern id="pattern0_335_1939" patternContentUnits="objectBoundingBox" width="1"
+                                height="1">
+                                <use xlink:href="#image0_335_1939" transform="scale(0.0104167)" />
+                            </pattern>
+                            <image id="image0_335_1939" width="96" height="96"
+                                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAEMElEQVR4nO2dyWoVQRSGPw3eiIpG1GgEg+AziCP4BE44bRzBaeHCAUfQrQM+hSOOeQU3Ths3inNURFQQFQdQQTxSeC5ESbc3fWu6ueeDs0m4XV3/X111urq6GgzDMAzDMAzDMAzDMAxj6HQBG4E+4CHwFZBhEl+1TleBDVrXbBgN7AM+ZiCURIoPwF6gM7X4PcCtDASRRHETmJZS/BcZiCCJ40UKEzrbvOXLP3Ejdne0P4NKS2axJ5b4XW024EqD8R6YEMOATRlUVjKN9TEM6MugopJpXIlhwOMMKiqZhrtZC87nDCoqJfFdb5J6NNxN4o9IZTttgiOZx97EWVvbGzBtEAXc38yAxC3wi10BaQ14ZAakNaDPDEhrwCYzIK0BEyNNoQQnhogSSIADZkBaA0YDt+0KSNsFTAdeWheUtg/uCfhAKTip+3jxJECoxQTBSS2weBagS5eauCUnDzzcMQcntcASQYBmZlGDk1pgiShAlVnU4KQWWJqYipg0xLpWmUUNTmqBpaIA7n+vgMXAiAbr6lJWMwB/BtTjDrAK6Ahw5xyc4WCADFjjeQnYAiwAZgFjteXvb9dB+DNwTkWZDUwBRmnZM4EjwE9PBsRsANkb8BrYDoxp4BwOmgF+VzEc1kvfR3YSu+G09BXwBphX4Rxct2QGNCn+XWBGxUaw0wxovuXPqCD8eGCHdlt2BVQU/1sD3U4NWKPZUP19s7LMx8aAIRjgBtwyVgD9AQZBG4Q11SzKdjqAkwGzEDNA8/wiTnoSyQwoucMdU9LtiBnQGFWFcgNq0YDbbwaEN8DN7QzGGs/9s+/z9lW+N6qemJtYG4zzZkAcAyZHWrVcRNtfAa6vj7FuvwgzIIIBnwrKcG+xt70BMbqghwVldJsBxYPwWY/inCooY64ZUJyGrvYozsqCMraZAX/SzcGoAU89CPR4wLPjf7loBpRPRSxvUqBfwJKCY4+LvH1acJo5uc0lxz3RxHGPlhx3a0TxszfgSUk3MRI4XqHlH9PfFqWfz8yAv0VzC57KWKZGNdLnL/3PsQ5FFj/7K0D0ee78/5QxSpcOnhmwZt/FfeC0ZjtFV1KdhRE36WgpA1y8BXoDnmOvlhFb/JYxoL4spTfA+blj3kskfksZIMA7YJHHc5ufsOW3pAGiY8LBksm6RqjpgJuiz295A0SjX3P2oawRHae/iZ1qJjUg9JZlX4ALOn8zR2cyaxrd+rftOr2Q2wbhUbYsi7XvjrRguJQ5OFczqKhkGpdjGLAhg4pKprE2hgFd+m5V6spKu25djG4NmbrCklnsIiKd+vGC1JWWTOJ6k/cxlXDvaT3PoPKSOJwGU0mEW+lwLQMRJOGHG5J9wqROTT9e8D4DQSRSuLruTtHtlDFB98+/4mnfHcko6s8iXN3Wxcx2DMMwDMMwDMMwDMMwDIYNvwE2khJUgE/96gAAAABJRU5ErkJggg==" />
+                        </defs>
+                    </svg>
+                </div>
+
+                <div>
+                    <!-- email -->
+                    <svg width="47" height="47" viewBox="0 0 47 47" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <circle cx="23.5" cy="23.5" r="23.5" fill="white" />
+                        <rect x="7" y="7" width="34" height="34" fill="url(#pattern0_335_2132)" />
+                        <defs>
+                            <pattern id="pattern0_335_2132" patternContentUnits="objectBoundingBox" width="1"
+                                height="1">
+                                <use xlink:href="#image0_335_2132" transform="scale(0.0104167)" />
+                            </pattern>
+                            <image id="image0_335_2132" width="96" height="96"
+                                xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAACXBIWXMAAAsTAAALEwEAmpwYAAAD7ElEQVR4nO2c24tOURjGnxmMs3HMsUFOSSSFFEq5UEYuRPkHxJALpfkX3LoSSeLOjWJQJFJSkpQoppkcyvkwzDiMMV5tvaSpmfnWYe/17q/nV8/d9+213udde+1377X2BgghhBBCCCGEEEIIIYQQQgZmNoD9AC4BaAXQBUCqXF0AHmvMWewNqYw/AaDHgCGSWJkHx4tMxBYAHw0ELsb0CcC2vM3fB+CXgWDFqDJvmvIyfweAXgNBinH15nEmTOO0A5ckdACYHjMBpw2MLCmZTsYyfyqAHwYCkhJWR9nMEcxBA8FISXUgRgLOGQhESqqzMRLwxEAgUlK1x0jAGgA3DAQjJdNtABsQkY0A7hsITIzrEYDtAGqQA0MB7ALwwkCgYkxvATQDqEMBjNLGOgwELgaejh4CMA4JmKSNfzNghBSs7N7oqN4nJadBO/PTgDFSwAO3MwDmF2XuaIffrgBw2YBJkpMua4x5eNcvPheXrGK6Y8AwiaSs+mv0LFaC8S2vavT3rQYMFE89VSNrA8r1YEJvMIZpEC8NGCoV6p2e9cMj3LAG018nrwBY7jgfNuvSnRgvKesd4lqsF+X+jhnMYKs/WeNzHY43WYP8bsDwviWlyyLKrAorv2AqCaBbOzPFcWfFKQNrzOcBLHDo9wQdQF8rPH4wLsF80GlmpMPxVwK4msD4mwDWOvSzTq9lbxzbCcYnuOfa2SGO1cPdAox/oNVZpdTq79s92wsmJNiHnsG25WD8M89BcS+w3WBiBH8LwDqP0/11hLbf67Q4wqH9VQCuRYo9mJijMCtdlzq0PUbN++zR1he9WI53aG+hVnUxCwNTCfi7W8C15Jup/6lkL+rf0niOR2ncnUO8wcTuUN8RWu/Ql0WDjNDsDFtm7OYwGCnotn+EQ59WA7je5xqz3uPxyKsC4gtGClIbgJ2Oa6lbVZVSo23kUWWVPgHi+ejX+iPyYCSRrjgufvTHkkEeljEBGHz5b16Jl0mDkZItgE8ytlGgKhIgqk41d2yJtspUVQJE9UJfBZqoajK8WawqEyAlEhMAJiD5KBSeAemNEE5B6c2QBOI1AExA8lEoPAPSGyGcgtKbIQnEawCYgOSjUHgGpDdCOAWlN0MSKBifPTkU/niQ7bYIJnszhobCe2tmMBeZAPgOwJYYCdjLBMA3AbtjJCB7E4Sfp4Sz+T26pTIKx3gWwDUBRxCRGayG4GJ+R6zPlf3PJgN7bKQE6s1pZ9+/D7fy26EY0PysaMmVRuPv+krCaWczCiJ7oeEwqyP4vnASjazM2gPggt71dRoYiZKzOjXWFo09WqlJCCGEEEIIIYQQQgghhBBUJb8BOAVQRaxuZE0AAAAASUVORK5CYII=" />
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+            <div class="copyright-footer">
+                <p>Copyright &copy; 2024 WeCinema</p>
+            </div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+    let 
+    if (phone_num = "none") {
+        
+    }
+    </script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+.privacy-body {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 50px 100px 50px 100px;
+  box-sizing: border-box;
+}
+
+.privacy-container {
+  color: #0f0f0f;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  justify-content: left;
+  align-items: left;
+}
+
+.privacy-list ol {
+  font-size: 20px;
+}
+
+.privacy-sublist {
+  font-weight: normal;
+  padding: 5px 0 25px 0;
+}
+
+.privacy-sublist ul {
+  font-weight: normal;
+  font-size: 18px;
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+.privacy-sublist li {
+  color: #0f0f0f;
+  list-style-type: disc;
+}
+
+.privacy-container h1 {
+  margin: 10px 0 15px 0;
+}
+
+.privacy-container h2 {
+  margin: 0 0 20px 0;
+  font-size: x-large;
+}

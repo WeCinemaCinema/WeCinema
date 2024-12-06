@@ -1,0 +1,27 @@
+@using ITDIV_TICKET.Models
+@model List<MoviesModel>
+
+<link rel="stylesheet" href="~/css/movie.css"/>
+
+<div class="flexMovies">
+
+
+    @if (Model == null || !Model.Any())
+    {
+        <div class="no-results">
+            <p class="noResultTxt">No movies found.</p>
+        </div>
+    }
+
+    @foreach(var movie in Model!)
+    {
+        <a class="movieCard" asp-action="Location" asp-controller="WeCinema" asp-route-id="@movie.Movie_id">
+            <img class="imageSrc" src="@($"https://image.tmdb.org/t/p/w500{movie.ImageUrl}")"/>
+            <div class="subTxt">
+                <p class="genre">@movie.Genre</p>
+                <div class="rating">@movie.Rating</div>
+                <p class="title">@movie.Title</p>
+            </div>
+        </a>
+    }
+</div>

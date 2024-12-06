@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="~/css/register.css"/>
+
+<div>
+    <div class="bigContainer">
+        <div class="leftSide">
+            <img src="~/img/registerBg.png" class="imageReg"/>
+        </div>
+        <div class="rightSide">
+            <div class="headerRegister">
+                <h1>Login</h1>
+                <h3 class="WeCinemaTxt">We<span class="cinemaTxt">Cinema</span></h3>
+            </div>
+
+            <form method="post" asp-action="DoLoginUser" class="formFlex">
+
+
+                <div class="inputFlex">
+                    <label for="email" class="labelTxt">Email Address</label>
+                    <input type="email" name="email" placeholder="xxxx@gmail.com" class="inputTxt" />
+                </div>
+
+                <div class="inputFlex">
+                    <label for="password" class="labelTxt">Password</label>
+                    <input type="password" name="password" placeholder="xxxxxxxxx" class="inputTxt"/>
+                </div>
+
+                @if(ViewData["ErrorMessage"] != null)
+                {
+                    <p class="errorTxt" style="color:red">@ViewData["ErrorMessage"]</p>
+                }
+
+                @if (TempData["ErrorMessage"] != null)
+                {       
+                    <p class="errorTxt" style="color:red">@TempData["ErrorMessage"]</p>
+                }
+
+                <input type="submit" value="Login" class="registerButton"/>
+            </form>
+
+            <p class="otherTxt">Other way to login</p>
+            <div class="loginMiddle">
+                <a asp-controller="Login" asp-action="Login">
+                    <div class="greyCircle">
+                        <img src="~/img/google.png" class="google"/>
+                    </div>
+                </a>
+            </div>
+
+            <p class="askingAccTxt">Don't have account?  <a href="register" class="loginHereTxt">Register here</a> </p>
+        </div>
+    </div>
+</div>
+
+
+

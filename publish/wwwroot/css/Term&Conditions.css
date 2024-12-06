@@ -1,0 +1,54 @@
+.term-body {
+  margin: 0 auto;
+  max-width: 1440px;
+  padding: 50px 100px 50px 100px;
+  box-sizing: border-box;
+  background-color: white;
+}
+
+.term-container {
+  color: #0f0f0f;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  text-align: left;
+  justify-content: left;
+}
+
+.term-container p {
+  font-weight: normal;
+  font-size: x-large;
+}
+
+.term-list ol {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.term-sublist {
+  font-weight: normal;
+  padding: 5px 0 25px 0;
+}
+
+.term-sublist ul {
+  font-weight: normal;
+  font-size: 18px;
+  position: relative;
+  margin: 0;
+  padding: 0 0 0 20px;
+}
+
+.term-sublist li {
+  color: #0f0f0f;
+  list-style-type: disc;
+}
+
+.term-container h1 {
+  margin: 10px 0 15px 0;
+}
+
+.term-container h2 {
+  margin: 0 0 20px 0;
+  font-weight: 540;
+}

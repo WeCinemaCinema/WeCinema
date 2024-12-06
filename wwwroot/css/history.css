@@ -1,0 +1,87 @@
+.historyCard {
+  display: flex;
+  flex-direction: row;
+  width: 540px;
+  background-color: white;
+  box-shadow: 1px 1px 10px rgb(156, 156, 156);
+  border-radius: 10px;
+}
+
+.historyFlex {
+  display: flex;
+  flex-direction: row;
+  padding: 40px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 40px;
+}
+
+.imageSrc {
+  height: 400px;
+  width: 270px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.rightSide {
+  padding: 1rem;
+  flex: 1;
+
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.leftSide {
+  flex: 1;
+}
+
+.titleTxt {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.bolded {
+  font-weight: bold;
+}
+
+.bottomSection {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.bigTxt {
+  font-size: 30px;
+}
+
+.flexTxt {
+  display: flex;
+  flex-direction: row;
+  width: 150px;
+  justify-content: space-between;
+}
+
+.icons {
+  margin-right: 5px;
+}
+
+.aligned {
+  display: flex;
+  flex-direction: row;
+}
+
+.no-results {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.noResultTxt {
+  font-size: 40px;
+  font-weight: bold;
+}
